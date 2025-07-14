@@ -69,7 +69,7 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-    let spellName = object["name"].split("");
+    let spellName = object.name.split("");
     let properNoun = spellName[0].toUpperCase() + spellName.slice(1, spellName.length-1);
     return "Welcome " + properNoun + "!";
 }
@@ -79,7 +79,7 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-    return object["name"].toString() + " is a " + object["species"].toString();
+    return object.name + " is a " + object.species;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-
+//loop thru the array to see which items in the array are NOT in isFriend
 }
 
 //////////////////////////////////////////////////////////////////////
