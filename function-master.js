@@ -2,8 +2,6 @@
 // Function 1 - Object Values ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-const { truncate } = require("lodash");
-
 function objectValues(object) {
     return Object.values(object);
 } 
@@ -70,8 +68,11 @@ function capitalizeAllWords(string) {
 
 function welcomeMessage(object) {
     let spellName = object.name.split("");
-    let properNoun = spellName[0].toUpperCase() + spellName.slice(1, spellName.length-1);
-    return "Welcome " + properNoun + "!";
+    spellName.shift();
+    spellName.unshift(object.name[0].toUpperCase());
+    let properNoun = spellName.join("");
+    return "Welcome " + properNoun + "!"; 
+   
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -79,7 +80,11 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-    return object.name + " is a " + object.species;
+    let spellName = object.name.split("");
+    spellName.shift();
+    spellName.unshift(object.name[0].toUpperCase());
+    let properNoun = spellName.join("");
+    return properNoun + " is a " + object.species;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -88,7 +93,7 @@ function profileInfo(object) {
 
 function maybeNoises(object) {
     if (Object.hasOwn(object, "noises")){
-        return object["noises"].split(" ").join(" ");
+        return object.noises.split(" ").join(" ");
     }else{
         return "there are no noises";
     }
