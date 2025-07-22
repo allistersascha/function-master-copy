@@ -80,11 +80,10 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-    let spellName = object.name.split("");
-    spellName.shift();
-    spellName.unshift(object.name[0].toUpperCase());
-    let properNoun = spellName.join("");
-    return properNoun + " is a " + object.species;
+    let properNoun = object.name[0].toUpperCase() + object.name.slice(1, object.name.length);
+    let bigSpecies = object.species[0].toUpperCase() + object.species.slice(1, object.species.length);
+    return `${properNoun} is a ${bigSpecies}`;
+    
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -92,8 +91,8 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-    if (Object.hasOwn(object, "noises")){
-        return object.noises.split(" ").join(" ");
+    if (Object.hasOwn(object, "noises") && (object.noises.length > 0)){
+        return object.noises.join(" ");
     }else{
         return "there are no noises";
     }
@@ -122,7 +121,9 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-    return object.friends.includes(name) ? true : false;
+    if ((Object.hasOwn(object, "friends")) && (object.friends.includes(name))) {
+        return true;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
